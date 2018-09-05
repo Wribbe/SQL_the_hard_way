@@ -9,7 +9,7 @@ ex3.db: ex2.sql ex3.sql
 
 %.db : %.sql
 	@rm -f $@
-	sqlite3 $@ < $^
+	sqlite3 -echo $@ < $^
 
 clean:
 	@rm -f *.db
