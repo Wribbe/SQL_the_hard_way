@@ -57,8 +57,31 @@ SELECT name, age FROM pet;
 SELECT name, age FROM pet WHERE dead = 0;
 SELECT * FROM person WHERE first_name != 'Zed';
 
+-- Find pets age > 10.
+SELECT * FROM pet WHERE age > 10;
+
+-- Find younger people.
+INSERT INTO person (id, first_name, last_name, age)
+  VALUES (2, 'Ari', 'Mari', 15);
+SELECT * from person WHERE age < 31;
+
+-- Find older people.
+SELECT * from person WHERE age > 31;
+
+-- More then one test.
+SELECT * from person WHERE age > 15 AND first_name = 'Stefan';
+
+-- Test with 3 columns.
+SELECT * from person WHERE id > 0 AND (age > 30 OR age < 37);
+
 /*
   Drills:
   -------
+
+  1.) Write query that find all pets older than 10 years.
+  2.) All people younger than me.
+  3.) All people older than me.
+  4.) More than one test.
+  5.) Test 3 columns.
 
 */
