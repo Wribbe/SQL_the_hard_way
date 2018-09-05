@@ -47,3 +47,20 @@ INSERT INTO pet (id, name, breed, age, dead)
 
 INSERT INTO person_pet (person_id, pet_id) VALUES (0, 0);
 INSERT INTO person_pet VALUES (0, 1);
+
+INSERT INTO person_pet (person_id, pet_id) VALUES (1,2);
+
+INSERT INTO person_pet (person_id, pet_id) VALUES (1,1);
+-- Now I am the owner of Gigantor to~
+
+/*
+  Drills:
+  -------
+
+  1.) Add self+pet relation; see above.
+
+  2.) Possible to store multiple owners of a pet.
+
+  3.) The current design is better for multiple ownership.
+
+*/
