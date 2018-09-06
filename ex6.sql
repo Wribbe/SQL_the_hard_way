@@ -85,8 +85,29 @@ SELECT pet.id, pet.name, pet.age, pet.dead
     AND person.first_name = 'Zed'
   );
 
+-- Find my pets added so far using name.
+SELECT pet.id, pet.name, pet.age, pet.dead
+  FROM pet
+  WHERE pet.id IN
+  (
+    SELECT pet_id from person_pet, person
+    WHERE person_pet.person_id = person.id
+    AND person.first_name = 'Stefan'
+  );
+
+-- Find my pets using my ID instead of name.
+SELECT pet.id, pet.name, pet.age, pet.dead
+  FROM pet
+  WHERE pet.id IN
+  (
+    SELECT pet_id from person_pet, person
+    WHERE person_pet.person_id = person.id
+    AND person.id = 1
+  );
+
 /*
   Drills:
   -------
-
+    1.) Find the pets you added this far.
+    2.) Find the pets you added this far by using id instead of name.
 */
