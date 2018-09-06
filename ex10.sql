@@ -57,21 +57,57 @@ INSERT INTO person (id, first_name, last_name, age)
 DELETE FROM pet WHERE dead = 1 AND name = 'Gigantor';
 INSERT INTO pet VALUES (1, 'Gigantor', 'Robot', 1, 0);
 
-SELECT * FROM pet;
+--SELECT * FROM pet;
+--
+--UPDATE pet SET name = "Zed's Pet" WHERE id IN (
+--  SELECT pet.id
+--  FROM pet, person_pet, person
+--  WHERE
+--    person.id = person_pet.person_id AND
+--    pet.id = person_pet.pet_id AND
+--    person.first_name = "Zed"
+--);
+--
+--SELECT * FROM pet;
 
-UPDATE pet SET name = "Zed's Pet" WHERE id IN (
-  SELECT pet.id
-  FROM pet, person_pet, person
+SELECT * from pet;
+
+-- Kill robot.
+UPDATE pet SET dead = 1 WHERE id IN (
+  SELECT pet.id FROM pet WHERE pet.breed = "Robot"
+);
+-- Rename Zed's dead pets.
+UPDATE pet SET name = "Zed's Dead Pet" WHERE id IN (
+  SELECT pet.id FROM pet, person, person_pet
   WHERE
     person.id = person_pet.person_id AND
     pet.id = person_pet.pet_id AND
-    person.first_name = "Zed"
+    person.first_name = "Zed" AND
+    pet.dead = 1
 );
 
-SELECT * FROM pet;
+SELECT * from pet;
 
 
 /*
   Drills:
   -------
+    1.) Rename dead pets to Zed's Dead Pet.
+    2.) SQL as Understood By SQLite:
+      - CREATE TABLE
+          Create a new table.
+      - DROP TABLE
+          Removes table from database and disk (not recoverable).
+      - INSERT
+          INSERT INTO table VALUES(...);
+          INSERT INTO table SELECT ...;
+          INSERT INTO table DEFAULT VALUES;
+      - DELETE
+          Removes records from the table indentified by the
+          qualified-table-name. If no WHERE clause -> All records in the table
+          are deleted.
+      - SELECT
+          Used to query the database.
+      - UPDATE
+          Modify subset of the values stored in zero or more rows in the database.
 */
