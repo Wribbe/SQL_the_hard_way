@@ -181,7 +181,18 @@ UPDATE pet SET name = 'Fancy Pants' WHERE id = 0;
 SELECT * FROM person;
 SELECT * FROM pet;
 
+-- Change zeds name back using id.
+UPDATE person SET first_name = 'Zed' WHERE person.id = 0;
+SELECT * FROM person;
+
+-- Rename any dead pets.
+SELECT * FROM pet;
+UPDATE pet SET name = 'DECEASED' WHERE pet.dead = 1;
+SELECT * FROM pet;
+
 /*
   Drills:
   -------
+    1.) Use UPDATE to change back the name of 'Zed' using ID.
+    2.) Rename any dead pets -> "DECEASED".
 */
