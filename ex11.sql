@@ -45,8 +45,8 @@ DELETE FROM pet WHERE dead = 1 AND name = 'Gigantor';
 INSERT INTO pet VALUES (1, 'Gigantor', 'Robot', 1, 0);
 
 -- Fails on unique id.
---INSERT INTO person (id, first_name, last_name, age)
---  VALUES (0, 'Frank', 'Smith', 100);
+INSERT OR IGNORE INTO person (id, first_name, last_name, age)
+  VALUES (0, 'Frank', 'Smith', 100);
 
 SELECT * FROM person;
 
@@ -62,7 +62,20 @@ REPLACE INTO person (id, first_name, last_name, age)
 
 SELECT * FROM person;
 
+-- Replace unicorn with pet Parrot.
+SELECT * FROM pet;
+REPLACE INTO pet (id, name, breed, age, dead)
+  VALUES (0, 'Kraa', 'Party Parrot', '18', 0);
+SELECT * FROM pet;
+
 /*
   Drills:
   -------
+  1.) Different INSERT OR:
+    - REPLACE
+    - ROLLBACK
+    - ABORT
+    - FAIL
+    - IGNORE
+  2.) Replace unicorn with pet Parrot.
 */
